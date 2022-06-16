@@ -57,7 +57,6 @@ const ExternalWrapper = styled.div`
 
 const UpperFooterLine = styled.div`
     height: 2px;
-    width: 100vw;
     background-color: #353535;
 `
 const InnerWrapper = styled.div`
@@ -100,7 +99,7 @@ const CopyrightText = styled.div`
 `
 
 const CopyrightLinks = styled.div`
-    padding-right: 40px;
+    margin-right: 40px;
 `
 
 const TwitterLink = styled.img`
