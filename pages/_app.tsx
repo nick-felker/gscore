@@ -15,9 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                     <Component {...pageProps} />
                 </PersistGate>
             </Provider>     
-    )
-
-  
+    ) 
 }
 
 export default MyApp

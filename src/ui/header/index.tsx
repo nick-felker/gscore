@@ -1,14 +1,18 @@
 import styled from "styled-components";
-
-
+import { useAppSelector } from '../../hooks';
+import { selectAuthFlag } from '../../redux/reducers/user';
+import UserHamburgerMenu from "../userHamburgerMenu";
 
 
 function Header(){
+
+    const userBlockFlag = useAppSelector(selectAuthFlag);
+
     return(
         <>
             <ExternalWrapper>
                 <Logo src="./images/logo.svg"/>
-                <UserBlock></UserBlock>
+                {userBlockFlag === true ? <UserHamburgerMenu/> : null}
             </ExternalWrapper>  
         </>
     )
@@ -27,9 +31,7 @@ const ExternalWrapper = styled.div`
     align-items: center;
 `
 
-const UserBlock = styled.div`
 
-`
 
 
 export default Header;
