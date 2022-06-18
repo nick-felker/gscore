@@ -4,6 +4,8 @@ import Offer from "../src/ui/offer";
 import Footer from "../src/ui/footer";
 import OfferCard from "../src/ui/offerCard";
 
+
+
 function Index(){
     return(
             <ExternalWrapper>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../button";
 
 
 interface Props{
@@ -29,11 +30,18 @@ function OfferCard(props:Props){
                         )
                     })}
                 </OptionsExternalWrapper>
+                <ButtonWrapper>
+                    <Button textColor={props.bgColor} text="Get Gscore"/>
+                </ButtonWrapper>
                 
             </ExternalWrapper>
    ) 
 }
 
+
+const ButtonWrapper = styled.div`
+    margin-top: 40px;
+`
 
 interface UnderOptionsLineProps{
     bgColor: string;
