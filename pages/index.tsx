@@ -20,6 +20,7 @@ function Index(){
                                 licenseCount="Single site license" 
                                 detailInfo="Get the advanced WordPress plugin that optimizes content with GSC keywords at one low annual price"
                                 options={['Single site license', 'Special introductory pricing', 'Unlimited Pages and Keywords', 'Billed anually']}
+                                buttonLink='./signup'
                             />
                         </OfferCardWrapper>
                         <OfferCardWrapper>
@@ -29,6 +30,7 @@ function Index(){
                                 licenseCount="3 Site license" 
                                 detailInfo="Get the advanced WordPress plugin that optimizes content with GSC keywords at one low annual price"
                                 options={['All features for 3 sites', 'Special introductory pricing', 'Unlimited Pages and Keywords', 'Billed anually']}
+                                buttonLink='./signup'
                             />
                         </OfferCardWrapper>
                         <OfferCardWrapper>
@@ -38,6 +40,7 @@ function Index(){
                                 licenseCount="10 Site license" 
                                 detailInfo="Get the advanced WordPress plugin that optimizes content with GSC keywords at one low annual price"
                                 options={['All features for 10 sites', 'Special introductory pricing', 'Unlimited Pages and Keywords', 'Billed anually']}
+                                buttonLink='./signup'
                             />
                         </OfferCardWrapper>  
                     </CardWrapper>
@@ -46,7 +49,6 @@ function Index(){
                         <ContactUsLink>Contact us</ContactUsLink>
                     </ContactUsWrapper>
                 </OfferWrapper>
-
                 <Footer/>
             </ExternalWrapper>
     )

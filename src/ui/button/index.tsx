@@ -1,18 +1,22 @@
 import styled from "styled-components";
-
+import Link from 'next/link';
 
 
 interface Props{
     text: string;
     textColor: string;
+    link: string;
 }
 
 function Button(props:Props){
     return(
         <>
+        <Link href={props.link}>
             <Root textColor={props.textColor}>
                 {props.text}
             </Root>
+        </Link>
+            
 
         </>
     )

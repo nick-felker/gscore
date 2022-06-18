@@ -8,6 +8,7 @@ interface Props{
     licenseCount: string;
     detailInfo: string;
     options: string[];
+    buttonLink: string;
 }
 
 
@@ -31,7 +32,7 @@ function OfferCard(props:Props){
                     })}
                 </OptionsExternalWrapper>
                 <ButtonWrapper>
-                    <Button textColor={props.bgColor} text="Get Gscore"/>
+                    <Button textColor={props.bgColor} text="Get Gscore" link={props.buttonLink}/>
                 </ButtonWrapper>
                 
             </ExternalWrapper>

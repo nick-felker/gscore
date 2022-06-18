@@ -7,7 +7,7 @@ interface Props{
 
 function Footer(props:Props){
     return(
-        <>
+        <ComponentWrapper>
             <ExternalWrapper>
                 <UpperFooterLine/>
                 <InnerWrapper>
@@ -45,13 +45,19 @@ function Footer(props:Props){
                             </LinkedinLinkWrapper>
                         </CopyrightLinks>
             </CopyrightWrapper>
-        </> 
+        </ComponentWrapper>
     )
 }
 
 
+const ComponentWrapper = styled.div`
+    background-color: #181818;
+`
+
+
 const ExternalWrapper = styled.div`
     font-family: THICCCBOI;
+    background-color: #181818;
     color: white;
 `
 
