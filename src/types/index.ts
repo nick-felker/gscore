@@ -6,4 +6,7 @@ export interface OfferInterface{
     countLicense: string;
     advancedInfo: string;
     options: string[];
+    signupFlag?: boolean;
+    loginFlag?: boolean;
+    checkoutFlag?: boolean;
 }

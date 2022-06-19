@@ -12,15 +12,21 @@ function Header(){
         <>
             <ExternalWrapper>
                 <Logo src="./images/logo.svg"/>
-                {userBlockFlag === true ? <UserHamburgerMenu/> : null}
+                {userBlockFlag === true ? <UserHamburgerMenu/> : <Tekst>da</Tekst>}
             </ExternalWrapper>  
         </>
     )
 }
 
+const Tekst = styled.p`
+    color: white;
+`
+
 
 const Logo = styled.img`
-
+    @media(max-width: 720px){
+        width: 140px;
+    }
 `
 
 const ExternalWrapper = styled.div`
@@ -29,6 +35,9 @@ const ExternalWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media(max-width: 720px){
+        padding: 40px 50px 40px 50px;
+    }
 `
 
 

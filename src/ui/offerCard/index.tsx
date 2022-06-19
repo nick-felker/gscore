@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Button from "../button";
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeOfferObj, SelectOfferObj } from '../../redux/reducers/offer';
+import { changeOfferObj, selectOfferObj } from '../../redux/reducers/offer';
 import {RootState} from '../../redux/store';
 
 interface Props{
@@ -87,6 +87,9 @@ const OptionIcon = styled.img`
 const OptionText = styled.p`
     color: white;
     font-size: 18px;
+    @media(max-width: 430px){
+        font-size: 14px;
+    }
 `
 
 const Price = styled.p`
@@ -95,6 +98,9 @@ const Price = styled.p`
     font-weight: 700;
     color: white;
     margin-bottom: 5px;
+    @media(max-width: 600px){
+        font-size: 40px;
+    }
 `
 
 const LicenseCount = styled.p`
@@ -102,6 +108,9 @@ const LicenseCount = styled.p`
     font-weight: 700;
     font-size: 24px;
     color: white;
+    @media(max-width: 600px){
+        font-size: 20px;
+    }
 `
 
 const DetailInfo = styled.p`
@@ -127,6 +136,10 @@ const ExternalWrapper = styled.div<ExternalWrapperProps>`
     justify-content: center;
     padding: 42px 48px 42px 48px;
     background-color: ${props=>props.bgColor};
+    @media(max-width: 430px){
+        padding: 42px 30px;
+        width: 300px;
+    }
 `
 
 

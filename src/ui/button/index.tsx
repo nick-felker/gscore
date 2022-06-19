@@ -42,6 +42,10 @@ const Root = styled.button<RootProps>`
         color: #DC2B2B;
         transition: 0.5s;
     }
+    @media(max-width: 430px){
+        font-size: 15px;
+        padding: 25px 70px;
+    }
 `
 
 

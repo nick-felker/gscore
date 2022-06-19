@@ -12,7 +12,7 @@ function Index(){
                 <Header/>
                 <OfferWrapper>
                     <Offer text="Get started with Gscore today!"/>
-                    <CardWrapper>
+                    <CardsWrapper>
                         <OfferCardWrapper>
                             <OfferCard 
                                 bgColor="#272727" 
@@ -21,6 +21,7 @@ function Index(){
                                 detailInfo="Get the advanced WordPress plugin that optimizes content with GSC keywords at one low annual price"
                                 options={['Single site license', 'Special introductory pricing', 'Unlimited Pages and Keywords', 'Billed anually']}
                                 buttonLink='./signup'
+                                key={Math.random().toString()}
                             />
                         </OfferCardWrapper>
                         <OfferCardWrapper>
@@ -31,6 +32,7 @@ function Index(){
                                 detailInfo="Get the advanced WordPress plugin that optimizes content with GSC keywords at one low annual price"
                                 options={['All features for 3 sites', 'Special introductory pricing', 'Unlimited Pages and Keywords', 'Billed anually']}
                                 buttonLink='./signup'
+                                key={Math.random().toString()}
                             />
                         </OfferCardWrapper>
                         <OfferCardWrapper>
@@ -41,9 +43,10 @@ function Index(){
                                 detailInfo="Get the advanced WordPress plugin that optimizes content with GSC keywords at one low annual price"
                                 options={['All features for 10 sites', 'Special introductory pricing', 'Unlimited Pages and Keywords', 'Billed anually']}
                                 buttonLink='./signup'
+                                key={Math.random().toString()}
                             />
                         </OfferCardWrapper>  
-                    </CardWrapper>
+                    </CardsWrapper>
                     <ContactUsWrapper>
                         <HaveMoreTenSitesText>Have more than 10 sites?</HaveMoreTenSitesText>
                         <ContactUsLink>Contact us</ContactUsLink>
@@ -62,6 +65,26 @@ const OfferCardWrapper = styled.div`
     :nth-child(even){
         margin-right: 28px;
         margin-left: 28px;
+    }
+    @media(max-width: 1210px){
+        :nth-child(even){
+            margin: 0px;
+        }
+        :nth-child(odd){
+            margin: 0px;
+        }
+        :nth-child(1){
+            margin-right: 30px;
+            margin-bottom: 30px;
+        }
+    }
+    @media(max-width: 805px){
+        :nth-child(n){
+            margin: 0px;
+        }
+        :nth-child(2){
+            margin: 30px 0px;
+        }
     }
 `
 
@@ -85,15 +108,22 @@ const ContactUsLink = styled.a`
 `
 
 
-const CardWrapper = styled.div`
+const CardsWrapper = styled.div`
     display: flex;
     margin-bottom: 42px;
     margin-top: 50px;
+   
+    @media(max-width: 1300px){
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
 `
 
 const ExternalWrapper = styled.div`
     background-color: #181818;
     font-family: THICCCBOI;
+    
 `
 const OfferWrapper = styled.div`
     display: flex;

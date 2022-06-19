@@ -1,2 +1,2 @@
 export { changeOfferObj } from './reducer'
-export { SelectOfferObj } from './selector'
+export { selectOfferObj } from './selector'

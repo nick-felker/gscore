@@ -3,13 +3,18 @@ import Header from '../src/ui/header';
 import Footer from '../src/ui/footer';
 import Offer from "../src/ui/offer";
 import ProgresBar from "../src/ui/progresBar";
-
+import { useAppSelector } from '../src/hooks';
+import { selectOfferObj } from '../src/redux/reducers/offer';
+import { RootState } from "../src/redux/store";
 
 interface Props{
 
 }
 
 function Signup(props:Props){
+    
+    const offerProgresBars = useAppSelector(selectOfferObj);
+    console.log(offerProgresBars);
     return(
         <>
             <ExternalWrapper>
@@ -17,13 +22,13 @@ function Signup(props:Props){
                 <InnerWrapper>
                     <ProgresBarsWrapper>
                         <ProgresBarElementWrapper>
-                            <ProgresBar text="Create account" barColor="#FC5842"/>
+                            <ProgresBar text="Create account" barColor="#FC5842" key={Math.random().toString()}/>
                         </ProgresBarElementWrapper>
                         <ProgresBarElementWrapper>
-                            <ProgresBar text="Log in" barColor="#393939"/>
+                            <ProgresBar text="Log in" barColor="#393939" key={Math.random().toString()}/>
                         </ProgresBarElementWrapper>
                         <ProgresBarElementWrapper>
-                            <ProgresBar text="Checkout" barColor="#393939"/>
+                            <ProgresBar text="Checkout" barColor="#393939" key={Math.random().toString()}/>
                         </ProgresBarElementWrapper>
                     </ProgresBarsWrapper>
                     <Offer text="Create account"/>

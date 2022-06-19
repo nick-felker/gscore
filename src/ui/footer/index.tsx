@@ -25,13 +25,16 @@ function Footer(props:Props){
             
             <CopyrightWrapper>
                         <CopyrightText>
-                            <Copyright>Copyright © 2022 GScore</Copyright>
-                            <VerticalBar/>
-                            <AllRightsReserved>All Rights Reserved</AllRightsReserved>
-                            <VerticalBar/>
-                            <CookiesLink>Cookies</CookiesLink>
-                            <VerticalBar/>
-                            <PrivacyPoliceLink>Privacy Policy</PrivacyPoliceLink>
+                                <Copyright>Copyright © 2022 GScore</Copyright>
+                                <VerticalBar/>
+                                <AllRightsReserved>All Rights Reserved</AllRightsReserved>
+                                <VerticalBar/>
+                            
+                            
+                                <CookiesLink>Cookies</CookiesLink>
+                                <VerticalBar/>
+                                <PrivacyPoliceLink>Privacy Policy</PrivacyPoliceLink>
+                            
                         </CopyrightText>
                         <CopyrightLinks>
                             <FacebookLinkWrapper>
@@ -70,6 +73,9 @@ const InnerWrapper = styled.div`
     flex-direction: column;
     align-items: flex-start;
     padding: 76px 85px 45px 86px;
+    @media(max-width: 940px){
+        padding: 76px 85px 45px 50px;
+    }
 `
 
 const LogoWrapper = styled.div`
@@ -85,6 +91,12 @@ const Logo = styled.img`
 const UnderLogoText = styled.p`
     position: relative;
     width: 54%;
+    @media(max-width: 720px){
+        width: 70%;
+    }
+    @media(max-width: 430px){
+        width: 100%;
+    }
 `
 
 const UnderFooterLine = styled.div`
@@ -100,12 +112,24 @@ const UnderFooterLineWrapper = styled.div`
 
 const CopyrightText = styled.div`
     display: flex;
+
     align-items: center;
+    @media(max-width: 720px){
+        flex-direction: column;
+    }
+    @media(max-width: 600px){
+        font-size: 14px;
+    }
 
 `
 
 const CopyrightLinks = styled.div`
     margin-right: 40px;
+    @media(max-width: 940px){
+        margin-right: 0px;
+        margin-top: 50px;
+    }
+
 `
 
 const TwitterLink = styled.img`
@@ -141,6 +165,9 @@ const Copyright = styled.p`
     font-size: 18px;
     font-weight: 500;
     color: #c7c7c7;
+    @media(max-width: 600px){
+        font-size: 14px;
+    }
 `
 const CookiesLink = styled.a`
     border-bottom: 1px solid white;
@@ -156,6 +183,9 @@ const AllRightsReserved = styled.p`
     font-size: 18px;
     font-weight: 500;
     color: #c7c7c7;
+    @media(max-width: 600px){
+        font-size: 14px;
+    }
 `
 
 const VerticalBar = styled.div`
@@ -163,6 +193,7 @@ const VerticalBar = styled.div`
     height: 2px;
     width: 22px;
     background-color: white;
+
 `
 
 
@@ -173,7 +204,13 @@ const CopyrightWrapper = styled.div`
     color: white;
     font-family: THICCCBOI;
     padding: 0px 50px 42px 67px;
-    
+    @media(max-width: 940px){
+        flex-direction: column;
+        align-items: center;
+    }
+    @media(max-width: 600px){
+        padding: 0px;
+    }
 `
 
 

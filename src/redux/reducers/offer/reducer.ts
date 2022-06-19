@@ -9,6 +9,9 @@ const initialState:OfferInterface = {
     advancedInfo: '',
     options: [],
     price: '',
+    loginFlag: false,
+    signupFlag: false,
+    checkoutFlag: false,
 }
 
 
