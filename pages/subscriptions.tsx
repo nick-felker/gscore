@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import {Footer, Header, Offer} from '../src/ui';
+import {Footer, Header, Offer} from '../src';
 
 
 interface Props{

@@ -1,7 +1,12 @@
 import styled from "styled-components";
 import Button from "../button";
-import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeOfferObj, selectOfferObj, RootState } from '../../redux';
+import { useAppDispatch, 
+        useAppSelector, 
+        changeOfferObj, 
+        selectOfferObj, 
+        RootState,
+    } from '../../';
+
 
 
 interface Props{

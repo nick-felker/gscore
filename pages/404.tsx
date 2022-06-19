@@ -1,6 +1,5 @@
-import {Footer, Header} from '../src/ui';
 import styled from "styled-components";
-
+import {Footer, Header} from '../src';
 
 function NotFound(){
     return(
