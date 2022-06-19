@@ -6,7 +6,7 @@ import { UserInterface } from "../../../types";
 
 
 const initialState:UserInterface = {
-    authFlag: false,
+    authFlag: true,
 }
 
 
