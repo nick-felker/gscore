@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import Link from 'next/link';
 
 
 interface Props{
@@ -10,10 +10,13 @@ function HamburgerAdditionalMenu(){
     return(
         <>
             <ExternalWrapper>
-                <SettingsRow>
-                    <SettingsIcon src="./images/Settings.svg"/>
-                    <SettingsText>Settings</SettingsText>
-                </SettingsRow>
+                <Link href={'./settings'}>
+                    <SettingsRow>
+                        <SettingsIcon src="./images/Settings.svg"/>
+                        <SettingsText>Settings</SettingsText>
+                    </SettingsRow>
+                </Link>
+                
                 <LogoutRow>
                     <LogoutIcon src="./images/LogOut.svg"/>
                     <LogoutText>Logout</LogoutText>
