@@ -112,11 +112,9 @@ const UnderFooterLineWrapper = styled.div`
 
 const CopyrightText = styled.div`
     display: flex;
-
     align-items: center;
-    @media(max-width: 720px){
-        flex-direction: column;
-    }
+    flex-wrap: wrap;
+    justify-content: center;
     @media(max-width: 600px){
         font-size: 14px;
     }
@@ -165,6 +163,7 @@ const Copyright = styled.p`
     font-size: 18px;
     font-weight: 500;
     color: #c7c7c7;
+    
     @media(max-width: 600px){
         font-size: 14px;
     }
