@@ -6,3 +6,4 @@ export {default as Offer } from './offer';
 export {default as OfferCard } from './offerCard';
 export {default as ProgresBar } from './progresBar';
 export {default as UserHamburgerMenu } from './userHamburgerMenu';
+export {default as Input} from './input';

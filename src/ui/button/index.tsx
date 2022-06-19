@@ -6,13 +6,14 @@ interface Props{
     text: string;
     textColor: string;
     link: string;
+    bgColor?: string;
 }
 
 function Button(props:Props){
     return(
         <>
         <Link href={props.link}>
-            <Root textColor={props.textColor}>
+            <Root textColor={props.textColor} bgColor={props.bgColor}>
                 {props.text}
             </Root>
         </Link>
@@ -25,18 +26,20 @@ function Button(props:Props){
 
 interface RootProps{
     textColor: string;
+    bgColor: string | undefined;
 }
 
 
 const Root = styled.button<RootProps>`
     font-family: THICCCBOI;
-    color: ${props=>props.textColor};
+    color: ${props=>props.textColor || 'white'};
     font-weight: 500;
     font-size: 18px;
     padding: 26px 100px;
     outline: none;
     border: none;
     border-radius: 6px;
+    background-color: ${props=>props.bgColor};
     cursor: pointer;
     :hover{
         color: #DC2B2B;

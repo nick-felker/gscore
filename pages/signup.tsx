@@ -1,12 +1,14 @@
 import styled from "styled-components";
-
+import Link from "next/link";
 import {Header, 
         Footer, 
         Offer, 
         ProgresBar,
         useAppSelector,
         selectOfferObj,
-        RootState
+        RootState,
+        Input,
+        Button
     } from '../src';
 
 
@@ -39,9 +41,17 @@ function Signup(props:Props){
                     <SubOffer>
                         You need to enter your name and email. We will send you a temporary password by email
                     </SubOffer>
-
-
-
+                    <Input inputType="text" placeholder="Username" />
+                    <Input inputType="email" placeholder="Email" />
+                    <Input inputType="password" placeholder="Password" />
+                    <Button text="Send password" textColor="white" link='./login' bgColor="#FC5842"/>
+                    <HaveAccountWrapper>
+                        <HaveAccountText>Have an account?</HaveAccountText>
+                        <Link href={'./login'}>
+                            <HaveAccountLink>Go to the next step</HaveAccountLink>
+                        </Link>
+                        
+                    </HaveAccountWrapper>
                 </InnerWrapper>
                 <Footer/>
             </ExternalWrapper>        
@@ -49,6 +59,20 @@ function Signup(props:Props){
     )
 }
 
+
+const HaveAccountWrapper = styled.div`
+    display: flex;
+    font-family: THICCCBOI;
+`
+
+const HaveAccountText = styled.p`
+    color: white;
+    margin-right: 10px;
+`
+const HaveAccountLink = styled.a`
+    color: #FC5842;
+    cursor: pointer;
+`
 
 const ProgresBarElementWrapper = styled.div`
     :nth-child(2){
@@ -75,7 +99,8 @@ const ExternalWrapper = styled.div`
 const SubOffer = styled.h4`
     color: white;
     font-family: THICCCBOI;
-    font-size: 14px;
+    font-size: 16px;
+    margin: 16px 0px 32px 0px;
     font-weight: 400;
 `
 

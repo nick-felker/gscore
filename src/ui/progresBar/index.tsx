@@ -36,7 +36,7 @@ interface BarProps{
 }
 const Bar = styled.div<BarProps>`
     background-color: ${props=>props.bgColor};
-    height: 7px;
+    height: 9px;
     border-radius: 5px;
     margin-top: 15px;
     width: 220px;
