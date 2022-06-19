@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import Button from "../button";
 import { useAppDispatch, useAppSelector } from '../../hooks';
-import { changeOfferObj, selectOfferObj } from '../../redux/reducers/offer';
-import {RootState} from '../../redux/store';
+import { changeOfferObj, selectOfferObj, RootState } from '../../redux';
+
 
 interface Props{
     bgColor: string;

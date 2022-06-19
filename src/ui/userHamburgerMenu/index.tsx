@@ -1,14 +1,17 @@
 import styled from "styled-components";
 import { useState } from 'react';
 import HamburgerAdditionalMenu from "../hamburgerAdditionalMenu";
-
+import Link from 'next/link';
 
 function UserHamburgerMenu(){
     const [overlayFlag, setOverlayFlag] = useState<boolean>(false);
     return(
         <>
             <ExternalWrapper>
-                <MySubs>My subscriptions</MySubs>
+                <Link href={'./subscriptions'}>
+                    <MySubs>My subscriptions</MySubs>
+                </Link>
+                
                 {overlayFlag === true ? <HamburgerAdditionalMenu/> : null}
                 <UserHamburger onClick={()=>setOverlayFlag(!overlayFlag)}>
                     <UserName>Nick</UserName>

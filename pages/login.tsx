@@ -1,6 +1,7 @@
 import styled from "styled-components";
-import Header from '../src/ui/header';
-import Footer from '../src/ui/footer';
+
+
+import {Header, Footer} from '../src/ui';
 
 
 interface Props{

@@ -1,9 +1,7 @@
 import styled from "styled-components";
-import Header from "../src/ui/header";
-import Offer from "../src/ui/offer";
-import Footer from "../src/ui/footer";
-import OfferCard from "../src/ui/offerCard";
 
+
+import {Header, Footer, OfferCard, Offer} from '../src/ui';
 
 
 function Index(){

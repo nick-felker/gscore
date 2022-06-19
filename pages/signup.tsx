@@ -1,11 +1,13 @@
 import styled from "styled-components";
-import Header from '../src/ui/header';
-import Footer from '../src/ui/footer';
-import Offer from "../src/ui/offer";
-import ProgresBar from "../src/ui/progresBar";
+
+import {Header, Footer, Offer, ProgresBar} from '../src/ui';
+
+
 import { useAppSelector } from '../src/hooks';
-import { selectOfferObj } from '../src/redux/reducers/offer';
-import { RootState } from "../src/redux/store";
+
+
+import {selectOfferObj, RootState} from '../src/redux'
+
 
 interface Props{
 

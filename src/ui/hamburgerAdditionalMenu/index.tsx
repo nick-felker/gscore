@@ -16,7 +16,6 @@ function HamburgerAdditionalMenu(){
                         <SettingsText>Settings</SettingsText>
                     </SettingsRow>
                 </Link>
-                
                 <LogoutRow>
                     <LogoutIcon src="./images/LogOut.svg"/>
                     <LogoutText>Logout</LogoutText>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import Footer from "../src/ui/footer";
-import Header from "../src/ui/header";
-import Offer from "../src/ui/offer";
+
+
+import {Footer, Header, Offer} from '../src/ui';
 
 
 interface Props{

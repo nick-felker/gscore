@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useAppSelector } from '../../hooks';
-import { selectAuthFlag } from '../../redux/reducers/user';
+import { selectAuthFlag } from '../../redux';
 import UserHamburgerMenu from "../userHamburgerMenu";
 
 

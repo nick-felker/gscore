@@ -1,5 +1,4 @@
-import Header from "../src/ui/header";
-import Footer from "../src/ui/footer";
+import {Footer, Header} from '../src/ui';
 import styled from "styled-components";
 
 
