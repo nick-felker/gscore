@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Button from "../button";
-
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { changeOfferObj, SelectOfferObj } from '../../redux/reducers/offer';
+import {RootState} from '../../redux/store';
 
 interface Props{
     bgColor: string;
@@ -13,8 +15,18 @@ interface Props{
 
 
 function OfferCard(props:Props){
+    
+    const dispatch = useAppDispatch();
+    function changeOfferPlan(){
+        dispatch(changeOfferObj({price: props.price, countLicense: props.licenseCount, options: props.options, advancedInfo: props.detailInfo}))
+        return 0;
+    }
+
+
+
    return(
             <ExternalWrapper bgColor={props.bgColor}>
+                
                 <Price>{props.price}</Price>
                 <LicenseCount>{props.licenseCount}</LicenseCount>
                 <DetailInfo>{props.detailInfo}</DetailInfo>
@@ -31,7 +43,7 @@ function OfferCard(props:Props){
                         )
                     })}
                 </OptionsExternalWrapper>
-                <ButtonWrapper>
+                <ButtonWrapper onClick={changeOfferPlan}>
                     <Button textColor={props.bgColor} text="Get Gscore" link={props.buttonLink}/>
                 </ButtonWrapper>
                 
@@ -42,6 +54,7 @@ function OfferCard(props:Props){
 
 const ButtonWrapper = styled.div`
     margin-top: 40px;
+
 `
 
 interface UnderOptionsLineProps{

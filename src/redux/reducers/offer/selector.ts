@@ -3,5 +3,5 @@ import { OfferInterface } from "../../../types";
 
 
 export const SelectOfferObj = (state:RootState) =>{
-    return state.offerReducer;
+    return state.offer;
 }
