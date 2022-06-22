@@ -200,17 +200,37 @@ const ProgresBarElementWrapper = styled.div`
         margin-right: 16px;
         margin-left: 16px;
     }
+    @media(max-width: 800px){
+        margin: 0px;
+        :nth-child(n){
+            margin-bottom: 20px;
+        }
+    }
 `
 
 const ProgresBarsWrapper = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 80px;
+    @media(max-width: 1500px){
+        margin-top: 150px;
+        
+    }
+    @media(max-width: 800px){
+        flex-direction: column;
+        
+    }
 `
 
 const InnerWrapper = styled.div`
     margin: 0 auto;
     width: 700px;
+    @media(max-width: 800px){
+        width: 500px;
+    }
+    @media(max-width: 550px){
+        width: 300px;
+    }
 `
 
 const ExternalWrapper = styled.div`

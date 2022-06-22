@@ -1,9 +1,14 @@
+import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useAppSelector, selectAuthFlag } from '../../';
+import { useAppSelector, selectAuthFlag, HamburgerAdditionalMenu } from '../../';
 import UserHamburgerMenu from "../userHamburgerMenu";
 
 
 function Header(){
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
+    useEffect(()=>{
+        setWindowWidth(window.innerWidth);
+    }, [window.innerWidth])
 
     const userBlockFlag = useAppSelector(selectAuthFlag);
 
@@ -11,7 +16,8 @@ function Header(){
         <>
             <ExternalWrapper>
                 <Logo src="./images/logo.svg"/>
-                {userBlockFlag === true ? <UserHamburgerMenu/> : <Tekst>da</Tekst>}
+                {userBlockFlag === false ? null : windowWidth <= 600 ? <UserHamburgerMenu/> : <HamburgerAdditionalMenu/>}
+                
             </ExternalWrapper>  
         </>
     )

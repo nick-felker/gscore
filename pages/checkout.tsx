@@ -7,6 +7,8 @@ import { Footer,
         useAppSelector,
         OfferInterface,
         Button,
+        changeOfferObj,
+        useAppDispatch,
     } from "../src";
 
 
@@ -15,9 +17,12 @@ interface Props{
 }
 
 function Checkout(props:Props){
-
+    const dispatch = useAppDispatch();
     const offerObj:OfferInterface = useAppSelector(selectOfferObj);
     
+    function deleteCurrentOfferPlan(){
+        dispatch(changeOfferObj({price: '0$', countLicense: '', advancedInfo: '', options: []}))
+    }
 
 
 
@@ -57,7 +62,7 @@ function Checkout(props:Props){
                             <SelectedPriceText>
                                 {offerObj.price}
                             </SelectedPriceText>
-                            <SelectedPriceIcon src='./images/ShopBasket.svg'/>
+                            <SelectedPriceIcon onClick={deleteCurrentOfferPlan} src='./images/ShopBasket.svg'/>
                         </SelectedPriceWrapper>                        
                     </SelectedPackageTitle>
                 </ResultPackageExternalWrapper>
