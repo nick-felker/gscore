@@ -16,7 +16,7 @@ function Header(){
         <>
             <ExternalWrapper>
                 <Logo src="./images/logo.svg"/>
-                {userBlockFlag === false ? null : windowWidth <= 600 ? <UserHamburgerMenu/> : <HamburgerAdditionalMenu/>}
+                {userBlockFlag === true ? <UserHamburgerMenu/> : null}
                 
             </ExternalWrapper>  
         </>

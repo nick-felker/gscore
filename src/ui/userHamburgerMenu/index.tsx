@@ -1,27 +1,66 @@
 import styled from "styled-components";
-import { useState } from 'react';
-import HamburgerAdditionalMenu from "../hamburgerAdditionalMenu";
+import { useState, useRef, useEffect } from 'react';
+
+import {    HamburgerAdditionalMenu,
+            MobileHamburgerMenu,
+
+        } from '../../'
 import Link from 'next/link';
 
-function UserHamburgerMenu(){
+
+
+interface Props{
+
+}
+function UserHamburgerMenu(props:Props){
+
+    const [additionalMenuFlag, setAdditionalMenuFlag] = useState<boolean>(false);
+    const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
     const [overlayFlag, setOverlayFlag] = useState<boolean>(false);
+    useEffect(()=>{
+        setWindowWidth(window.innerWidth);
+    }, [window.innerWidth])
+
     return(
         <>
-            <ExternalWrapper>
-                <Link href={'./subscriptions'}>
-                    <MySubs>My subscriptions</MySubs>
-                </Link>
-                
-                {overlayFlag === true ? <HamburgerAdditionalMenu/> : null}
-                <UserHamburger onClick={()=>setOverlayFlag(!overlayFlag)}>
-                    <UserName>Nick</UserName>
-                    <ArrowDown src="./images/ShevronDown.svg"/>
-                </UserHamburger>
-            </ExternalWrapper>
-            {overlayFlag === true ? <Overlay onClick={()=>setOverlayFlag(!overlayFlag)}/> : null}
+            {windowWidth <= 600 ? 
+                <>
+                    <HamburgerIcon src="./images/Hamburger.svg" onClick={()=>setAdditionalMenuFlag(!additionalMenuFlag)}/> 
+                    {additionalMenuFlag === true ? <MobileHamburgerMenu/> : null}
+                </>
+            :
+                <>
+                    <ExternalWrapper>
+                    <Link href={'./subscriptions'}>
+                        <MySubs>My subscriptions</MySubs>
+                    </Link>
+                    
+                    {overlayFlag === true ? <HamburgerAdditionalMenu/> : null}
+                    <UserHamburger onClick={()=>setOverlayFlag(!overlayFlag)}>
+                        <UserName>Nick</UserName>
+                        <ArrowDown src="./images/ShevronDown.svg"/>
+                    </UserHamburger>
+                    </ExternalWrapper>
+                    {overlayFlag === true ? <Overlay onClick={()=>setOverlayFlag(!overlayFlag)}/> : null}
+                </>
+            
+            
+            
+            
+            
+            }
+           
         </>
     )
 }
+
+const HamburgerIcon = styled.img`
+    cursor: pointer;
+    :hover{
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+`
 
 
 const Overlay = styled.div`

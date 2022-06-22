@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import Link from 'next/link';
-
+import { useState, useRef } from 'react';
 
 interface Props{
 
 }
 
-function HamburgerAdditionalMenu(){
+function HamburgerAdditionalMenu(props:Props){
+
+
+
+    
     return(
         <>
             <ExternalWrapper>
