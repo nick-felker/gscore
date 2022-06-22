@@ -1,5 +1,13 @@
 import styled from "styled-components";
-import { Footer, Header, Offer, ProgresBar } from "../src";
+import { Footer, 
+        Header, 
+        Offer, 
+        ProgresBar,
+        selectOfferObj,
+        useAppSelector,
+        OfferInterface,
+        Button,
+    } from "../src";
 
 
 interface Props{
@@ -7,6 +15,12 @@ interface Props{
 }
 
 function Checkout(props:Props){
+
+    const offerObj:OfferInterface = useAppSelector(selectOfferObj);
+    
+
+
+
     return(
         <>
         <ExternalWrapper>
@@ -14,24 +28,140 @@ function Checkout(props:Props){
             <InnerWrapper>
                 <ProgresBarsWrapper>
                         <ProgresBarElementWrapper>
-                            <ProgresBar text="Create account" barColor="#393939" key={Math.random().toString()}/>
+                            <ProgresBar text="Create account" barColor="#FC5842" key={Math.random().toString()}/>
                         </ProgresBarElementWrapper>
                         <ProgresBarElementWrapper>
-                            <ProgresBar text="Log in" barColor="#393939" key={Math.random().toString()}/>
+                            <ProgresBar text="Log in" barColor="#FC5842" key={Math.random().toString()}/>
                         </ProgresBarElementWrapper>
                         <ProgresBarElementWrapper>
                             <ProgresBar text="Checkout" barColor="#FC5842" key={Math.random().toString()}/>
                         </ProgresBarElementWrapper>
                 </ProgresBarsWrapper>
                 <Offer text="Checkout"/>
-
-
+                <ResultPackageExternalWrapper>
+                    
+                    <ResultPackageTitle>
+                        <PackageNameTitle>
+                            Package name
+                        </PackageNameTitle>
+                        <PriceTitle>
+                            Price
+                        </PriceTitle>
+                    </ResultPackageTitle>
+                    <UnderTitleLine/>
+                    <SelectedPackageTitle>
+                        <SelectedPackageName>
+                            {offerObj.countLicense}
+                        </SelectedPackageName>
+                        <SelectedPriceWrapper>
+                            <SelectedPriceText>
+                                {offerObj.price}
+                            </SelectedPriceText>
+                            <SelectedPriceIcon src='./images/ShopBasket.svg'/>
+                        </SelectedPriceWrapper>                        
+                    </SelectedPackageTitle>
+                </ResultPackageExternalWrapper>
+                <TotalPriceWrapper>
+                    <TotalPriceTitle>Total: </TotalPriceTitle>
+                    <TotalPrice>{offerObj.price}</TotalPrice>
+                </TotalPriceWrapper>
+                <ButtonWrapper>
+                    <Button text="Purchase" bgColor="#FC5842" textColor="white" link="./settings"/>
+                </ButtonWrapper>
             </InnerWrapper>
             <Footer/>
         </ExternalWrapper>
         </>
     )
 }
+
+const ButtonWrapper = styled.div`
+    margin-bottom: 250px;
+
+`
+
+const TotalPriceWrapper = styled.div`
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    font-family: THICCCBOI;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+`
+const TotalPriceTitle = styled.p`
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+`
+const TotalPrice = styled.p`
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+`
+
+const SelectedPackageTitle = styled.div`
+    display: flex;
+    padding: 32px 50px 48px 32px;
+    justify-content: space-between;
+`
+
+const ResultPackageTitle = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 48px 72px 32px 32px;
+`
+const UnderTitleLine = styled.div`
+    background-color: #969696;
+    position: relative;
+    width: 100%;
+    height: 2px;
+`
+const ResultPackageExternalWrapper = styled.div`
+    display: flex;
+    margin: 32px 0px 24px 0px;
+    flex-direction: column;
+    font-family: THICCCBOI;
+    width: 100%;
+    position: relative;
+    background-color: #272727;
+    border-radius: 12px;
+
+    
+`
+
+const PackageNameTitle = styled.p`
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+`
+const PriceTitle = styled.p`
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+`
+const SelectedPackageName = styled.p`
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+`
+const SelectedPriceWrapper = styled.div`
+    display: flex;
+`
+const SelectedPriceText = styled.p`
+    color: white;
+    font-size: 24px;
+    font-weight: 400;
+`
+const SelectedPriceIcon = styled.img`
+    margin-left: 10px;
+    cursor: pointer;
+    :hover{
+        opacity: 0.7;
+        transition: 0.5s;
+    }
+`
+
 
 
 const ProgresBarElementWrapper = styled.div`
@@ -55,7 +185,7 @@ const InnerWrapper = styled.div`
 
 const ExternalWrapper = styled.div`
     background-color: #181818;
-    height: 100vh;
+    
 `
 
 
