@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
+import {Form, Field} from 'react-final-form';
 import {Header, 
         Footer, 
         Offer, 
@@ -8,8 +9,11 @@ import {Header,
         selectOfferObj,
         RootState,
         Input,
-        Button
+        Button,
+        FormButton,
+        FormInterface
     } from '../src';
+import { useRef, useState } from 'react'
 
 
 
@@ -17,10 +21,34 @@ interface Props{
 
 }
 
+
+
 function Signup(props:Props){
+
+    const passwordField = useRef<HTMLInputElement>(null);
+    const usernameField = useRef<HTMLInputElement>(null);
+    const emailField = useRef<HTMLInputElement>(null);
+
+
+    async function signupData(values:FormInterface){
+        console.log(values);
+        // const response = await fetch('https://gscore-back.herokuapp.com/api/users/sign-up',{
+        //     method: 'POST',
+        //     headers:{
+        //         'Content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify({email: values.email, password: values.password, username: values.username}),
+        // })
+        // const result = await response.json();
+        // console.log(response.status)
+        // console.log(result);
+        
+        return true;
+    }
+    
     
     const offerProgresBars = useAppSelector(selectOfferObj);
-    console.log(offerProgresBars);
+   
     return(
         <>
             <ExternalWrapper>
@@ -41,10 +69,86 @@ function Signup(props:Props){
                     <SubOffer>
                         You need to enter your name and email. We will send you a temporary password by email
                     </SubOffer>
-                    <Input inputType="text" placeholder="Username" />
-                    <Input inputType="email" placeholder="Email" />
-                    <Input inputType="password" placeholder="Password" />
-                    <Button text="Send password" textColor="white" link='./login' bgColor="#FC5842"/>
+                    
+                    <Form
+                        onSubmit={signupData}
+                        render={({handleSubmit, values})=>(
+                            <form
+                                onSubmit={handleSubmit}
+                            >
+                                
+                                    <Field
+                                        name="username"
+                                    >
+                                        {props =>(
+                                                <InputWrapper>
+                                                    <Input
+                                                        type="text"
+                                                        onChange={props.input.onChange}
+                                                        placeholder="Username"
+                                                        name={props.input.name}
+                                                        validationFlag={false}
+                                                    />
+                                                </InputWrapper>
+                                        )}
+                                    </Field>
+
+                                    <Field
+                                        name="email"
+                                    >
+                                        {props =>(
+                                                <InputWrapper>
+                                                    <Input
+                                                        type="email"
+                                                        onChange={props.input.onChange}
+                                                        placeholder="Email"
+                                                        name={props.input.name}
+                                                        validationFlag={false}
+                                                    />
+                                                </InputWrapper>
+                                        )}
+                                    </Field>
+
+                                    <Field
+                                        name="password"
+                                    >
+                                        {props =>(
+                                                <InputWrapper>
+                                                    <Input
+                                                        type="password"
+                                                        name='password'
+                                                        onChange={props.input.onChange}
+                                                        value={props.input.value}
+                                                        placeholder="Password"
+                                                        validationFlag={false}
+                                                    />
+                                                    
+                                                </InputWrapper>
+                                        )}
+                                        
+                                    </Field>
+                                   
+                                    <Field
+                                        name="signupButton"
+                                    >       
+                                        {props =>(
+                                                <InputWrapper>
+                                                    <FormButton onSubmit={handleSubmit} text="Send password"/>
+                                                </InputWrapper>
+                                        )}
+                                    </Field>
+                                    
+                                
+                                
+
+                            </form>
+                        )}
+                    />
+                    
+                    
+                    
+                    
+                    
                     <HaveAccountWrapper>
                         <HaveAccountText>Have an account?</HaveAccountText>
                         <Link href={'./login'}>
@@ -60,9 +164,19 @@ function Signup(props:Props){
 }
 
 
+
+
+const InputWrapper = styled.div`
+    margin-bottom: 25px;
+    :nth-child(6){
+        margin-bottom: 48px;
+    }
+`
+
 const HaveAccountWrapper = styled.div`
     display: flex;
     font-family: THICCCBOI;
+    margin-bottom: 200px;
 `
 
 const HaveAccountText = styled.p`
@@ -94,7 +208,6 @@ const InnerWrapper = styled.div`
 
 const ExternalWrapper = styled.div`
     background-color: #181818;
-    height: 100vh;
 `
 const SubOffer = styled.h4`
     color: white;
@@ -102,6 +215,11 @@ const SubOffer = styled.h4`
     font-size: 16px;
     margin: 16px 0px 32px 0px;
     font-weight: 400;
+
+`
+const ButtonWrapper = styled.div`
+    margin-bottom: 52px;
+    position: relative;
 `
 
 export default Signup;

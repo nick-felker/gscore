@@ -1,15 +1,30 @@
 import styled from "styled-components";
+import { FieldRenderProps } from 'react-final-form';
+
 
 
 interface Props{
-    inputType: string;
     placeholder: string;
+    type: string;
+    validationFlag: boolean;
+    name: string;
+    value?: string;
+    onChange?: any;
 }
 
-function Input(props:Props){
+// type Props = FieldRenderProps<string>
+
+function Input({placeholder, type, validationFlag, value, name, onChange}:Props){
     return(
         <>
-            <Root placeholder={props.placeholder} type={props.inputType}/>
+            <Root
+                placeholder={placeholder}
+                type={type}
+                onChange={onChange}
+                autoComplete="off"
+                name={name}
+            >
+            </Root>
         </>
     )
 }

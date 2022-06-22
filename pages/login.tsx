@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import {Field, Form} from 'react-final-form';
 
-
-import {Header, Footer, Offer, ProgresBar, Input} from '../src';
+import {Header, 
+        Footer, 
+        Offer, 
+        ProgresBar, 
+        Input,
+        FormButton,
+    } from '../src';
 
 
 interface Props{
@@ -10,6 +16,10 @@ interface Props{
 
 
 function Login(props:Props){
+
+    function loginData(){
+        document.location = './checkout';
+    }
     return(
         <>
             <ExternalWrapper>
@@ -26,9 +36,11 @@ function Login(props:Props){
                             <ProgresBar text="Checkout" barColor="#393939" key={Math.random().toString()}/>
                         </ProgresBarElementWrapper>
                     </ProgresBarsWrapper>
-                    <Offer text="Log in"/>
-                    <Input inputType="email" placeholder="Email"/>
-                    <Input inputType="password" placeholder="Password"/>
+                    <OfferWrapper>
+                        <Offer text="Log in"/>
+                    </OfferWrapper>
+                    
+                    
 
                 </InnerWrapper>
                 <Footer/>
@@ -36,6 +48,20 @@ function Login(props:Props){
         </>
     )
 }
+
+const OfferWrapper = styled.div`
+    margin-bottom: 32px;
+`
+
+const InputWrapper = styled.div`
+    margin-bottom: 25px;
+    :nth-child(2){
+        margin-bottom: 48px;
+    }
+    :nth-child(3){
+        margin-bottom: 250px;
+    }
+`
 
 const ProgresBarElementWrapper = styled.div`
     :nth-child(2){
@@ -56,7 +82,6 @@ const InnerWrapper = styled.div`
 `
 
 const ExternalWrapper = styled.div`
-    height: 100vh;
     background-color: #181818;
 `
 

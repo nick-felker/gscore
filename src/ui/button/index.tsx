@@ -13,7 +13,7 @@ function Button(props:Props){
     return(
         <>
         <Link href={props.link}>
-            <Root textColor={props.textColor} bgColor={props.bgColor}>
+            <Root type="submit" textColor={props.textColor} bgColor={props.bgColor}>
                 {props.text}
             </Root>
         </Link>
