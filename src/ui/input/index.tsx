@@ -6,7 +6,7 @@ import { FieldRenderProps } from 'react-final-form';
 interface Props{
     placeholder: string;
     type: string;
-    validationFlag: boolean;
+    validateStatus: string;
     name: string;
     value?: string;
     onChange?: any;
@@ -14,38 +14,59 @@ interface Props{
 
 // type Props = FieldRenderProps<string>
 
-function Input({placeholder, type, validationFlag, value, name, onChange}:Props){
+function Input({placeholder, type, validateStatus, value, name, onChange}:Props){
     return(
         <>
             <Root
+                validateStatus={validateStatus}
                 placeholder={placeholder}
                 type={type}
                 onChange={onChange}
                 autoComplete="off"
                 name={name}
-            >
-            </Root>
+            />
+           {validateStatus === 'error' ? <ErrorText>Error text</ErrorText> : null}
+
         </>
     )
 }
 
-const Root = styled.input`
+
+
+const ErrorText = styled.p`
+    color: #FF5A65;
+    margin: 4px;
+    font-family: THICCCBOI;
+`
+interface RootProps{
+    validateStatus: string;
+}
+const Root = styled.input<RootProps>`
     border-radius: 6px;
-    border: none;
     outline: none;
+    ${props=>props.validateStatus === 'ok' ? 'border: 1px solid #05C168' : props.validateStatus === 'error' ? 'border: 1px solid #FF5A65' : 'border: none'};    
     caret-color: #FC5842;
+    
     font-family: THICCCBOI;
     position: relative;
     width: 100%;
     font-size: 18px;
     padding: 25px 0px 25px 25px;
-    background-color: white;
     ::placeholder{
         text-fill-color: red;
         font-size: 18px;
         color: #969696;
         font-weight: 500;
     }
+    ${props=> props.validateStatus === 'ok' ? 'background: url("./images/Check.svg") no-repeat 95%' : props.validateStatus === 'error' ? 'background: url("./images/Close.svg")  no-repeat 95%' : null};
+   
+    background-color: white;
+
+`
+
+
+const SuccessIcon = styled.img`
+
 `
 
 

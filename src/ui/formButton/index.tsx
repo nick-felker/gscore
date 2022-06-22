@@ -12,7 +12,7 @@ import { FormEventHandler } from "react";
 interface Props{
     onSubmit: FormEventHandler<HTMLInputElement>;
     text: string;
-    signupForm?: (email: string, password: string, username:string)=>boolean;
+    signupForm?: (email: string, password: string, username:string)=>void;
     loginForm?: (username: string, password: string)=>boolean;
     changeDataForm?: (password: string, newPassword: string, email: string, username: string)=>boolean;
 }
@@ -42,6 +42,7 @@ function FormButton({text, onSubmit}:Props){
 
 
 
+
 const Root = styled.input`
     font-family: THICCCBOI;
     color: white;
@@ -61,6 +62,7 @@ const Root = styled.input`
         font-size: 15px;
         padding: 25px 70px;
     }
+    
 `
 
 

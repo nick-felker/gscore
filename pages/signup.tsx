@@ -25,13 +25,23 @@ interface Props{
 
 function Signup(props:Props){
 
-    const passwordField = useRef<HTMLInputElement>(null);
-    const usernameField = useRef<HTMLInputElement>(null);
-    const emailField = useRef<HTMLInputElement>(null);
+    const [passwordFormFlag, setPasswordFormFlag] = useState('');
+    const [emailFormFlag, setEmailFormFlag] = useState('');
+    const [usernameFormFlag, setUsernameFormFlag] = useState('');
+    
+   
 
 
-    async function signupData(values:FormInterface){
-        console.log(values);
+    function signupData(values:FormInterface){
+        
+
+        !!values.password?.trim() === false ? setPasswordFormFlag('error') : setPasswordFormFlag('ok');
+        !!values.email?.trim() === false ? setEmailFormFlag('error') : setEmailFormFlag('ok');
+        !!values.username?.trim() === false ? setUsernameFormFlag('error') : setUsernameFormFlag('ok');
+       
+       
+      
+        
         // const response = await fetch('https://gscore-back.herokuapp.com/api/users/sign-up',{
         //     method: 'POST',
         //     headers:{
@@ -42,12 +52,9 @@ function Signup(props:Props){
         // const result = await response.json();
         // console.log(response.status)
         // console.log(result);
-        
-        return true;
+       
     }
     
-    
-    const offerProgresBars = useAppSelector(selectOfferObj);
    
     return(
         <>
@@ -87,7 +94,7 @@ function Signup(props:Props){
                                                         onChange={props.input.onChange}
                                                         placeholder="Username"
                                                         name={props.input.name}
-                                                        validationFlag={false}
+                                                        validateStatus={usernameFormFlag}
                                                     />
                                                 </InputWrapper>
                                         )}
@@ -103,7 +110,7 @@ function Signup(props:Props){
                                                         onChange={props.input.onChange}
                                                         placeholder="Email"
                                                         name={props.input.name}
-                                                        validationFlag={false}
+                                                        validateStatus={emailFormFlag}
                                                     />
                                                 </InputWrapper>
                                         )}
@@ -120,7 +127,7 @@ function Signup(props:Props){
                                                         onChange={props.input.onChange}
                                                         value={props.input.value}
                                                         placeholder="Password"
-                                                        validationFlag={false}
+                                                        validateStatus={passwordFormFlag}
                                                     />
                                                     
                                                 </InputWrapper>
