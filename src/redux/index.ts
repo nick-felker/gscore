@@ -5,3 +5,5 @@ export {changeUserObj, selectAuthFlag} from './reducers/user';
 export {default as userReducer } from './reducers/user/reducer';
 export {default as offerReducer } from './reducers/offer/reducer';
 export {changeOfferObj, selectOfferObj} from './reducers/offer';
+export {default as pageReducer} from './reducers/page/reducer';
+export {changePageObj, selectHamburgerAdditionalMenuFlag} from './reducers/page';

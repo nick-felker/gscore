@@ -18,3 +18,7 @@ export interface FormInterface{
     username: string;
     email?: string;
 }
+
+export interface PageInterface{
+    hamburgerAdditionalMenuFlag: boolean;
+}

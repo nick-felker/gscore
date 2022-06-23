@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useAppSelector, selectAuthFlag, HamburgerAdditionalMenu } from '../../';
 import UserHamburgerMenu from "../userHamburgerMenu";
-
+import Link from "next/link";
 
 function Header(){
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -15,7 +15,10 @@ function Header(){
     return(
         <>
             <ExternalWrapper>
-                <Logo src="./images/logo.svg"/>
+                <Link href={'./'}>
+                    <Logo src="./images/logo.svg"/>
+                </Link>
+                
                 {userBlockFlag === true ? <UserHamburgerMenu/> : null}
                 
             </ExternalWrapper>  
@@ -29,6 +32,7 @@ const Tekst = styled.p`
 
 
 const Logo = styled.img`
+    cursor: pointer;
     @media(max-width: 720px){
         width: 140px;
     }

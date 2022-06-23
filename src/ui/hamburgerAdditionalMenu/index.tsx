@@ -57,6 +57,7 @@ const LogoutRow = styled.div`
 
 
 const ExternalWrapper = styled.div`
+    color: white;
     position: absolute;
     z-index: 3;
     background-color: #272727;
