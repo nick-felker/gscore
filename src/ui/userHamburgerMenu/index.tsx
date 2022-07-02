@@ -31,9 +31,11 @@ function UserHamburgerMenu(props:Props){
         <>
             {windowWidth > 600 ? 
                 <ExternalWrapper>
-                    <MySubs>
-                        My subscriptions
-                    </MySubs>
+                    <Link href={'./subscriptions'}>
+                        <MySubs>
+                            My subscriptions
+                        </MySubs>
+                    </Link>
                     <UserHamburger onClick={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}>
                         <UserName>
                             Nick

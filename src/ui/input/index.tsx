@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FieldRenderProps } from 'react-final-form';
-
+import {useState} from 'react';
 
 
 interface Props{
@@ -15,16 +15,26 @@ interface Props{
 // type Props = FieldRenderProps<string>
 
 function Input({placeholder, type, validateStatus, value, name, onChange}:Props){
+
+    const [fieldType, setFieldType] = useState<string>(type);
+
+    function showPasswordFunction(){
+        if(fieldType === 'password') setFieldType('text');
+        if(fieldType === 'text') setFieldType('password');
+        return fieldType;
+    }
+
     return(
         <>
             <Root
                 validateStatus={validateStatus}
                 placeholder={placeholder}
-                type={type}
+                type={fieldType}
                 onChange={onChange}
                 autoComplete="off"
                 name={name}
             />
+            {type === 'password' ? <ShowPassword onClick={showPasswordFunction}><ShowPasswordImg src="./images/FieldPassword.svg"/></ShowPassword> : null}
            {validateStatus === 'error' ? <ErrorText>Error text</ErrorText> : null}
 
         </>
@@ -32,6 +42,20 @@ function Input({placeholder, type, validateStatus, value, name, onChange}:Props)
 }
 
 
+
+const ShowPassword = styled.a`
+    position: relative;
+    border: none;
+    cursor: pointer;
+    left: 85%;
+    top: -48px;
+    outline: none;
+    background: none;
+
+`
+
+const ShowPasswordImg = styled.img`
+`
 
 const ErrorText = styled.p`
     color: #FF5A65;

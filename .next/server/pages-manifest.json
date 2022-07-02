@@ -2,8 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/subscriptions": "pages/subscriptions.js",
+  "/404": "pages/404.js",
   "/signup": "pages/signup.js",
-  "/login": "pages/login.js",
-  "/settings": "pages/settings.js",
-  "/checkout": "pages/checkout.js"
+  "/": "pages/index.js"
 }

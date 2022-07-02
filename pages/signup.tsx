@@ -38,7 +38,7 @@ function Signup(props:Props){
         !!values.password?.trim() === false ? setPasswordFormFlag('error') : setPasswordFormFlag('ok');
         !!values.email?.trim() === false ? setEmailFormFlag('error') : setEmailFormFlag('ok');
         !!values.username?.trim() === false ? setUsernameFormFlag('error') : setUsernameFormFlag('ok');
-       
+        if(usernameFormFlag === 'ok' && emailFormFlag === 'ok' && passwordFormFlag === 'ok') document.location = './login';
        
       
         
