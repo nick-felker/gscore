@@ -7,7 +7,10 @@ import {Header,
         ProgresBar, 
         Input,
         FormButton,
-        FormInterface
+        postFetch,
+        FormInterface,
+        useAppDispatch,
+        changeUserObj,
     } from '../src';
 
 
@@ -17,9 +20,12 @@ interface Props{
 
 
 function Login(props:Props){
+    const dispatch = useAppDispatch()
 
     const [passwordFormFlag, setPasswordFormFlag] = useState('');
     const [emailFormFlag, setEmailFormFlag] = useState('');
+    const [passwordErrorText, setPasswordErrorText] = useState<string>('');
+    const [emailErrorText, setEmailErrorText] = useState<string>('');
     
 
     function signupData(values:FormInterface){
@@ -28,22 +34,43 @@ function Login(props:Props){
         !!values.password?.trim() === false ? setPasswordFormFlag('error') : setPasswordFormFlag('ok');
         !!values.email?.trim() === false ? setEmailFormFlag('error') : setEmailFormFlag('ok');
         
-        
-       
+        postFetch({url: 'https://gscore-back.herokuapp.com/api/users/sign-in', body: JSON.stringify({email: values.email, password: values.password})})
+        .then(response=>{
+            if(response.ok){
+                response.text()
+                    .then(data=>{
+                        dispatch(changeUserObj({showUsernameFlag: true}));
+                        const dataBuff = JSON.parse(data);
+                        console.log(dataBuff);
+                        localStorage.setItem('token', dataBuff.token)
+                    })
+                    .then(()=>{
+                        
+                        
+                    });
+            }
+            else{
+                response.text()
+                    .then(data=>{
+                        
+                        const dataBuff = JSON.parse(data);
+                        if(dataBuff.message.includes('email')){
+                            setEmailErrorText(dataBuff.message);
+                            setEmailFormFlag('error');
+                        }
+                        else if(dataBuff.message.includes('password')){
+                            setPasswordErrorText(dataBuff.message);
+                            setPasswordFormFlag('error');
+                        }
+                        console.log(dataBuff.message);
+                    })
+            }
+        })
        
       
         
-        // const response = await fetch('https://gscore-back.herokuapp.com/api/users/sign-up',{
-        //     method: 'POST',
-        //     headers:{
-        //         'Content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify({email: values.email, password: values.password, username: values.username}),
-        // })
-        // const result = await response.json();
-        // console.log(response.status)
-        // console.log(result);
-        document.location = './checkout';
+        
+        
     }
 
     function loginData(){
@@ -88,6 +115,7 @@ function Login(props:Props){
                                                         placeholder="Email"
                                                         name={props.input.name}
                                                         validateStatus={emailFormFlag}
+                                                        errorText={emailErrorText}
                                                     />
                                                 </InputWrapper>
                                         )}
@@ -105,6 +133,7 @@ function Login(props:Props){
                                                         value={props.input.value}
                                                         placeholder="Password"
                                                         validateStatus={passwordFormFlag}
+                                                        errorText={passwordErrorText}
                                                     />
                                                     
                                                 </InputWrapper>

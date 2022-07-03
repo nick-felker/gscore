@@ -1,6 +1,8 @@
 export interface UserInterface{
-    authFlag: boolean;
-    token: string;
+    authFlag?: boolean;
+    token?: string;
+    username?: string;
+    showUsernameFlag?: boolean;
 }
 export interface OfferInterface{
     price: string;
@@ -21,4 +23,10 @@ export interface FormInterface{
 
 export interface PageInterface{
     hamburgerAdditionalMenuFlag: boolean;
+}
+
+export interface SignupInterface{
+    emailError: string;
+    passwordError: string;
+    usernameError: string;
 }

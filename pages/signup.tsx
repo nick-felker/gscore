@@ -11,7 +11,10 @@ import {Header,
         Input,
         Button,
         FormButton,
-        FormInterface
+        FormInterface,
+        postFetch,
+        useAppDispatch,
+        changeUserObj,
     } from '../src';
 import { useRef, useState } from 'react'
 
@@ -24,6 +27,7 @@ interface Props{
 
 
 function Signup(props:Props){
+    const dispatch = useAppDispatch();
 
     const [passwordFormFlag, setPasswordFormFlag] = useState('');
     const [emailFormFlag, setEmailFormFlag] = useState('');
@@ -38,21 +42,29 @@ function Signup(props:Props){
         !!values.password?.trim() === false ? setPasswordFormFlag('error') : setPasswordFormFlag('ok');
         !!values.email?.trim() === false ? setEmailFormFlag('error') : setEmailFormFlag('ok');
         !!values.username?.trim() === false ? setUsernameFormFlag('error') : setUsernameFormFlag('ok');
-        if(usernameFormFlag === 'ok' && emailFormFlag === 'ok' && passwordFormFlag === 'ok') document.location = './login';
-       
-      
-        
-        // const response = await fetch('https://gscore-back.herokuapp.com/api/users/sign-up',{
-        //     method: 'POST',
-        //     headers:{
-        //         'Content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify({email: values.email, password: values.password, username: values.username}),
-        // })
-        // const result = await response.json();
-        // console.log(response.status)
-        // console.log(result);
-       
+        if(usernameFormFlag === 'ok' && emailFormFlag === 'ok' && passwordFormFlag === 'ok') 
+        postFetch({body: JSON.stringify({email: values.email, password: values.password, username: values.username}), url: 'https://gscore-back.herokuapp.com/api/users/sign-up'})
+            .then(response=>{
+                if(response.ok){
+                    response.text()
+                        .then(data=>{
+                            const dataBuff = JSON.parse(data);
+                            console.log(dataBuff);
+                            localStorage.setItem('token', dataBuff.token)
+                        })
+                        .then(()=>{
+                            dispatch(changeUserObj({username: values.username}))
+                            document.location = './login';
+                        });
+                }
+                else{
+                    response.text()
+                        .then(data=>{
+                            console.log(data);
+                        })
+                }
+            })
+            
     }
     
    

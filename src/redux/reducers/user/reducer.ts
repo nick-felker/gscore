@@ -8,6 +8,8 @@ import { UserInterface } from "../../../types";
 const initialState:UserInterface = {
     authFlag: true,
     token: '',
+    username: '',
+    showUsernameFlag: false,
 }
 
 

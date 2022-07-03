@@ -9,8 +9,11 @@ interface PostFetchArguments{
 
 export function postFetch({url, body}:PostFetchArguments){
     
-
-
-
-    return 0;
+    return fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body,
+    })
 }

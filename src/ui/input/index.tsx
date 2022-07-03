@@ -10,11 +10,12 @@ interface Props{
     name: string;
     value?: string;
     onChange?: any;
+    errorText?: string;
 }
 
 // type Props = FieldRenderProps<string>
 
-function Input({placeholder, type, validateStatus, value, name, onChange}:Props){
+function Input({placeholder, type, validateStatus, value, name, onChange, errorText}:Props){
 
     const [fieldType, setFieldType] = useState<string>(type);
 
@@ -35,7 +36,7 @@ function Input({placeholder, type, validateStatus, value, name, onChange}:Props)
                 name={name}
             />
             {type === 'password' ? <ShowPassword onClick={showPasswordFunction}><ShowPasswordImg src="./images/FieldPassword.svg"/></ShowPassword> : null}
-           {validateStatus === 'error' ? <ErrorText>Error text</ErrorText> : null}
+            {validateStatus === 'error' ? <ErrorText>{errorText || 'Error'}</ErrorText> : null}
 
         </>
     )

@@ -8,9 +8,11 @@ interface PutFetchArguments{
 
 export function putFetch({url, body}:PutFetchArguments){
     
-    
-    
-    
-    
-    return 0;
+    return fetch(url, {
+        method: 'PUT',
+        headers: {
+            Authorization: '4',
+        },
+        body,
+    })
 }

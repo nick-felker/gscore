@@ -1,2 +1,2 @@
 export { changeUserObj } from './reducer'
-export { selectAuthFlag } from './selector'
+export { selectAuthFlag, selectUsername, selectShowUsernameFlag } from './selector'

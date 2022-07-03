@@ -7,6 +7,8 @@ import {    HamburgerAdditionalMenu,
             selectHamburgerAdditionalMenuFlag,
             useAppDispatch,
             changePageObj,
+            selectUsername,
+            selectShowUsernameFlag,
         } from '../../'
 import Link from 'next/link';
 
@@ -17,7 +19,11 @@ interface Props{
 
 
 function UserHamburgerMenu(props:Props){
+
+    const username:string = useAppSelector(selectUsername);
+    const showUsernameFlag = useAppSelector(selectShowUsernameFlag);
     const dispatch = useAppDispatch();
+    console.log(showUsernameFlag)
     const hamburgerAdditionalMenuFlag:boolean = useAppSelector(selectHamburgerAdditionalMenuFlag);
 
     const [windowWidth, setWindowWidth] = useState<number>(window.innerWidth);
@@ -26,37 +32,46 @@ function UserHamburgerMenu(props:Props){
     }, [window.innerWidth])
 
 
+    if(showUsernameFlag !== true){
+        return (
+            <>
+            </>
+        )
+    }
+    else{
+        return (
+            <>
+                {windowWidth > 600 ? 
+                    <ExternalWrapper>
+                        <Link href={'./subscriptions'}>
+                            <MySubs>
+                                My subscriptions
+                            </MySubs>
+                        </Link>
+                        <UserHamburger onClick={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}>
+                            <UserName>
+                                {username}
+                            </UserName>
+                            <ArrowDown src="./images/ShevronDown.svg"/>
+                        </UserHamburger>
+                        
 
-    return(
-        <>
-            {windowWidth > 600 ? 
-                <ExternalWrapper>
-                    <Link href={'./subscriptions'}>
-                        <MySubs>
-                            My subscriptions
-                        </MySubs>
-                    </Link>
-                    <UserHamburger onClick={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}>
-                        <UserName>
-                            Nick
-                        </UserName>
-                        <ArrowDown src="./images/ShevronDown.svg"/>
-                    </UserHamburger>
-                    
 
+                    </ExternalWrapper>
+                :
+                    <div onClick={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}>
+                    <HamburgerIcon src="./images/Hamburger.svg"/>
+                    </div>
+                }
+                {hamburgerAdditionalMenuFlag === true ? <Overlay onClick={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}/> : null}
 
-                </ExternalWrapper>
-            :
-            <div onClick={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}>
-            <HamburgerIcon src="./images/Hamburger.svg"/>
-            </div>
-            }
-            {hamburgerAdditionalMenuFlag === true ? <Overlay onClick={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}/> : null}
+                {hamburgerAdditionalMenuFlag === false ? null : windowWidth <= 600 ? <MobileHamburgerMenu setAdditionalMenuFlag={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}/> : <HamburgerAdditionalMenu/> }
+            </>
+        )
+    }
+    
+            
 
-            {hamburgerAdditionalMenuFlag === false ? null : windowWidth <= 600 ? <MobileHamburgerMenu setAdditionalMenuFlag={()=>dispatch(changePageObj({hamburgerAdditionalMenuFlag: !hamburgerAdditionalMenuFlag}))}/> : <HamburgerAdditionalMenu/> }
-
-        </>
-    )
 }
 
 const HamburgerIcon = styled.img`
