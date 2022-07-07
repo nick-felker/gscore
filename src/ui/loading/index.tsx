@@ -35,6 +35,7 @@ const LoadingRotate = keyframes`
 `
 
 const Title = styled.p`
+    font-family: THICCCBOI;
     font-size: 24px;
     margin-right: 10px;
 `

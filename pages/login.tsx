@@ -11,6 +11,10 @@ import {Header,
         FormInterface,
         useAppDispatch,
         changeUserObj,
+        selectLoadingFlag,
+        changePageObj,
+        useAppSelector,
+        Loading,
     } from '../src';
 
 
@@ -26,10 +30,10 @@ function Login(props:Props){
     const [emailFormFlag, setEmailFormFlag] = useState('');
     const [passwordErrorText, setPasswordErrorText] = useState<string>('');
     const [emailErrorText, setEmailErrorText] = useState<string>('');
-    
+    const loadingFlag = useAppSelector(selectLoadingFlag);
 
     function signupData(values:FormInterface){
-        
+        dispatch(changePageObj({loadingFlag: true}));
 
         !!values.password?.trim() === false ? setPasswordFormFlag('error') : setPasswordFormFlag('ok');
         !!values.email?.trim() === false ? setEmailFormFlag('error') : setEmailFormFlag('ok');
@@ -45,8 +49,8 @@ function Login(props:Props){
                         localStorage.setItem('token', dataBuff.token)
                     })
                     .then(()=>{
-                        
-                        
+                        dispatch(changePageObj({loadingFlag: false}));
+                        document.location = './checkout';
                     });
             }
             else{
@@ -73,12 +77,10 @@ function Login(props:Props){
         
     }
 
-    function loginData(){
-        document.location = './checkout';
-    }
     return(
         <>
             <ExternalWrapper>
+                {loadingFlag === true ? <Loading/> : null}
                 <Header/>
                 <InnerWrapper>
                     <ProgresBarsWrapper>

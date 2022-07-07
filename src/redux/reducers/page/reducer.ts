@@ -9,6 +9,7 @@ import { PageInterface } from "../../../types";
 
 const initialState:PageInterface = {
     hamburgerAdditionalMenuFlag: false,
+    loadingFlag: false,
 }
 
 

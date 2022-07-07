@@ -12,7 +12,6 @@ import {Header,
 function Index(){
     return(
             <ExternalWrapper>
-                <Loading/>
                 <Header/>
                 <OfferWrapper>
                     <Offer text="Get started with Gscore today!"/>

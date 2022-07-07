@@ -1,2 +1,2 @@
 export { changePageObj } from './reducer';
-export { selectHamburgerAdditionalMenuFlag } from './selector';
+export { selectHamburgerAdditionalMenuFlag, selectLoadingFlag } from './selector';

@@ -22,7 +22,8 @@ export interface FormInterface{
 }
 
 export interface PageInterface{
-    hamburgerAdditionalMenuFlag: boolean;
+    hamburgerAdditionalMenuFlag?: boolean;
+    loadingFlag?: boolean;
 }
 
 export interface SignupInterface{

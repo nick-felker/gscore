@@ -15,6 +15,9 @@ import {Header,
         postFetch,
         useAppDispatch,
         changeUserObj,
+        selectLoadingFlag,
+        changePageObj,
+        Loading,
     } from '../src';
 import { useRef, useState } from 'react'
 
@@ -28,7 +31,7 @@ interface Props{
 
 function Signup(props:Props){
     const dispatch = useAppDispatch();
-
+    const loadingFlag = useAppSelector(selectLoadingFlag);
     const [passwordFormFlag, setPasswordFormFlag] = useState('');
     const [emailFormFlag, setEmailFormFlag] = useState('');
     const [usernameFormFlag, setUsernameFormFlag] = useState('');
@@ -37,7 +40,7 @@ function Signup(props:Props){
 
 
     function signupData(values:FormInterface){
-        
+        dispatch(changePageObj({loadingFlag: true}));
 
         !!values.password?.trim() === false ? setPasswordFormFlag('error') : setPasswordFormFlag('ok');
         !!values.email?.trim() === false ? setEmailFormFlag('error') : setEmailFormFlag('ok');
@@ -54,6 +57,7 @@ function Signup(props:Props){
                         })
                         .then(()=>{
                             dispatch(changeUserObj({username: values.username}))
+                            dispatch(changePageObj({loadingFlag: false}));
                             document.location = './login';
                         });
                 }
@@ -71,6 +75,7 @@ function Signup(props:Props){
     return(
         <>
             <ExternalWrapper>
+                {loadingFlag === true ? <Loading/> : null}
                 <Header/>
                 <InnerWrapper>
                     <ProgresBarsWrapper>
