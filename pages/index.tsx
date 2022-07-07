@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
 
-import {Header, Footer, OfferCard, Offer} from '../src';
+import {Header, 
+    Footer, 
+    OfferCard, 
+    Offer,
+    Loading
+} from '../src';
 
 
 function Index(){
     return(
             <ExternalWrapper>
+                <Loading/>
                 <Header/>
                 <OfferWrapper>
                     <Offer text="Get started with Gscore today!"/>

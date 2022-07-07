@@ -9,3 +9,4 @@ export {default as UserHamburgerMenu } from './userHamburgerMenu';
 export {default as Input} from './input';
 export {default as FormButton} from './formButton';
 export {default as MobileHamburgerMenu} from './mobileHamburgerMenu';
+export {default as Loading} from './loading';
